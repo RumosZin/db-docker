@@ -1,0 +1,15 @@
+version: "3.8"
+networks:
+  mysql:
+services: 
+  mysql:
+    container_name: mysql
+    image: mysql:8.0
+    restart: always
+    ports:
+      - ${MYSQL_EXTERNAL_PORT}:${MYSQL_INTERNAL_PORT}
+    volumes:
+      - ./volumes/data/mysql/:/var/lib/mysql
+    env_file: .env
+    environment:
+      TZ: Asia/Seoul
